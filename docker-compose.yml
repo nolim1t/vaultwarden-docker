@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+    vaultwarden:
+        container_name: vaultwarden
+        image: vaultwarden/server:1.23.1
+        user: "1000:1000"
+        restart: on-failure
+        stop_grace_period: 1m
+        network_mode: host
+        volumes:
+            - "${PWD}/data:/data"
+        environment:
+            HOME: "/data"
+            ROCKET_PORT: 8089
+
